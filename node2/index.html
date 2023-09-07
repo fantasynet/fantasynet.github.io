@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasyNetwork - Node2 Status</title>
+    <meta name="description" content="FantasyNetwork Server Status">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
 
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .online {
+            color: #00aa00;
+            background-color: #e0ffe0;
+        }
+
+        .offline {
+            color: #aa0000;
+            background-color: #ffe0e0;
+        }
+
+        .version {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .player-list {
+            font-size: 16px;
+        }
+
+        .player-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .player-list li {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <b>Node2 Server</b>
+        <div class="status" id="status"></div>
+        <div class="version" id="version"></div>
+        <div class="player-list" id="playerList"></div>
+    </div>
+
+    <script>
+        const statusElement = document.getElementById('status');
+        const versionElement = document.getElementById('version');
+        const playerListElement = document.getElementById('playerList');
+
+        const apiUrl = 'https://api.mcsrvstat.us/bedrock/3/fantasynetwork.myftp.org:4377';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.online) {
+                    statusElement.textContent = 'Server Status: Online';
+                    statusElement.classList.add('online');
+                    versionElement.textContent = 'Version: ' + data.version;
+
+                    if (data.players && data.players.list && data.players.list.length > 0) {
+                        const playerList = data.players.list.map(player => '<li>' + player.name + '</li>').join('');
+                        playerListElement.innerHTML = '<strong>Players:</strong><ul>' + playerList + '</ul>';
+                    }
+                } else {
+                    statusElement.textContent = 'Server Status: Offline';
+                    statusElement.classList.add('offline');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching server status:', error);
+            });
+    </script>
+</body>
+</html>
