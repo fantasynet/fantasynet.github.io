@@ -1,15 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Join FantasyNetwork</title>
-    <meta name="description" content="FantasyNetwork Add External Server.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSphere Hosting</title>
+    <meta name="description" content="Virtual Private Server Gratis Indonesia.">
+    <meta property="og:image" content="https://chromeheartsbrand.com/hosting/logo.jpg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        // Menggunakan JavaScript untuk mengarahkan pengguna ke URL Minecraft setelah 3 detik
-        setTimeout(function() {
-            window.location.href = "minecraft://connect/fantasynetwork.zapto.org:7721";
-        }, 0); // Penundaan dalam milidetik (3 detik = 3000 ms)
+    <header>
+        <nav>
+            <div class="container">
+                <h1>SecureSphere Hosting</h1>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to SecureSphere Hosting</h2>
+            <p>VPS Gratis Region Indonesia dengan Processor Intel Core</p>
+            <a href="#pricing" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>High Uptime</h3>
+                <p>Our servers guarantee high uptime for your websites and applications.</p>
+            </div>
+            <div class="feature">
+                <h3>Security</h3>
+                <p>We prioritize the security of your data and provide robust protection.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Support</h3>
+                <p>Our support team is available around the clock to assist you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class "container">
+            <h2>Pricing Plans</h2>
+            <div class="pricing-plan">
+                <h3>FREE VPS</h3>
+                <p>Rp0/bulan</p>
+                <p><b>Specs:</b><br />Intel Core Processor</br>16GB of Ram<br />0 IP Public(Connect via tunnel)<br />Full Root Access<br />100MBPS Internet Speed</p>
+                <a href="plan/freevps" class="btn">Choose Plan</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>Sewa Dedicated Server</h3>
+                <p>Mulai dari Rp1.000.000/bulan</p>
+                <p><b>Specs:</b>Intel Core Processor<br />Selected Ram<br />1-5 IP Public<br />Full Root Access<br />100MBPS Internet Speed</p>
+                <a href="plan/dedicated-server" class="btn">Choose Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Jika memiliki pertanyaan atau masalah terhadap server, bisa hubungi admin(fikri).</p>
+            <a href="https://wa.me/6287769811262/" class="btn">WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 SecureSphere Hosting. All rights reserved.</p>
+        </div>
+    </footer>
+     <script>
+        // JavaScript untuk efek animasi
+        const hero = document.getElementById('hero');
+        const heroText = document.querySelector('#hero h2');
+
+        hero.addEventListener('mouseover', () => {
+            heroText.style.transform = 'scale(1.1)';
+        });
+
+        hero.addEventListener('mouseout', () => {
+            heroText.style.transform = 'scale(1)';
+        });
     </script>
 </body>
 </html>
