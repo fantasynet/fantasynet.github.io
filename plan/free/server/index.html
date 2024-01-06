@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExodusHosting - Your Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #server-info {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+#panel-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #panel-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div id="server-info">
+    <h1>Server Kamu Telah Siap!</h1>
+    <p>IP: 147.185.221.17</p>
+    <p>Port: 4364</p>
+    <p id="uptime"></p>
+</br>
+<a id="panel-button" href="https://exodushosting.zapto.org/plan/free/server/panel/" target="_blank">Panel</a>
+</div>
+
+<script>
+    // Get startTime from localStorage or set it to current time
+    var startTime = localStorage.getItem('startTime');
+    if (!startTime) {
+        startTime = new Date();
+        localStorage.setItem('startTime', startTime);
+    } else {
+        startTime = new Date(startTime);
+    }
+
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Format time to HH:MM:SS
+        var timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("real-time").innerText = "TIME NOW: " + timeString;
+    }
+
+    function updateUptime() {
+        var currentTime = new Date();
+        var uptimeInSeconds = Math.floor((currentTime - startTime) / 1000);
+        var uptimeHours = Math.floor(uptimeInSeconds / 3600);
+        var uptimeMinutes = Math.floor((uptimeInSeconds % 3600) / 60);
+        var uptimeSeconds = uptimeInSeconds % 60;
+
+        document.getElementById("uptime").innerText = "UPTIME: " +
+            uptimeHours + " hours, " + uptimeMinutes + " minutes, " + uptimeSeconds + " seconds";
+    }
+
+    // Update clock every second
+    setInterval(updateClock, 1000);
+
+    // Update uptime every second
+    setInterval(updateUptime, 1000);
+</script>
+
+</body>
+</html>
